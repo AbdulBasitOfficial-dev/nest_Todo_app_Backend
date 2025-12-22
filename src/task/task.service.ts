@@ -54,7 +54,10 @@ export class TaskService {
   // UPDATE TASK
   async updateTask(taskId: string, userId: string, data: Partial<Task>) {
     const task = await this.taskModel.findOneAndUpdate(
-      { _id: taskId, userId },
+      {
+        _id: new Types.ObjectId(taskId),
+        userId: new Types.ObjectId(userId),
+      },
       data,
       { new: true },
     );
@@ -66,8 +69,8 @@ export class TaskService {
   // DELETE TASK
   async deleteTask(taskId: string, userId: string) {
     const task = await this.taskModel.findOneAndDelete({
-      _id: taskId,
-      userId,
+      _id: new Types.ObjectId(taskId),
+      userId: new Types.ObjectId(userId),
     });
 
     if (!task) throw new NotFoundException('Task not found');
