@@ -36,19 +36,21 @@ export class UserService {
     }
 
     const hash = await bcrypt.hash(password, 10);
-    const user = await this.userModel.findByIdAndUpdate(
-      id,
-      {
-        name,
-        email,
-        password: hash,
-        role,
-      },
-      {
-        new: true,
-        setDefaultsOnInsert: true,
-      },
-    );
+    const user = await this.userModel
+      .findByIdAndUpdate(
+        id,
+        {
+          name,
+          email,
+          password: hash,
+          role,
+        },
+        {
+          new: true,
+          setDefaultsOnInsert: true,
+        },
+      )
+      .exec();
     return {
       Message: 'User SignUp Succesfully ',
       data: user,
@@ -57,7 +59,7 @@ export class UserService {
 
   // Deleter User
   async userDelete(id: string) {
-    const user = await this.userModel.findByIdAndDelete(id);
+    const user = await this.userModel.findByIdAndDelete(id).exec();
     if (!user) {
       throw new NotFoundException('User Not Found ');
     }
