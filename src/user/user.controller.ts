@@ -9,8 +9,8 @@ import {
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { AuthGuard } from '@nestjs/passport';
-import { RolesGuard } from 'src/auth/Guard/roles.guard';
-import { Roles } from 'src/auth/decorator/roles.decorator';
+import { RolesGuard } from '../auth/Guard/roles.guard';
+import { Roles } from '../auth/decorator/roles.decorator';
 import { CreateUserDto } from './dto/create.user.dto';
 
 @Controller('user')

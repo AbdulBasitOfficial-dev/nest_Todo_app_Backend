@@ -8,9 +8,9 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import { GetUser } from 'src/user/decorator/user.decorator';
+import { GetUser } from '../user/decorator/user.decorator';
 import { TaskService } from './task.service';
-import { JwtAuthGuard } from 'src/auth/Guard/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/Guard/jwt-auth.guard';
 
 @Controller('task')
 @UseGuards(JwtAuthGuard)

@@ -9,8 +9,8 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { CategoryService } from './category.service';
-import { GetUser } from 'src/user/decorator/user.decorator';
-import { JwtAuthGuard } from 'src/auth/Guard/jwt-auth.guard';
+import { GetUser } from '../user/decorator/user.decorator';
+import { JwtAuthGuard } from '../auth/Guard/jwt-auth.guard';
 
 @Controller('category')
 @UseGuards(JwtAuthGuard)
