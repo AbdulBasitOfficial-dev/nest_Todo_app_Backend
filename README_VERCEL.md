@@ -12,7 +12,7 @@ This guide explains how to deploy your NestJS backend to Vercel.
 
 Before deploying, make sure to set these environment variables in Vercel:
 
-1. **MONGOE_URL** - Your MongoDB connection string
+1. **MONGODB_URI** (preferred) or **MONGO_URL** - Your MongoDB connection string
    - Example: `mongodb+srv://username:password@cluster.mongodb.net/database?retryWrites=true&w=majority`
 
 2. **JWT_SECRET** (if used) - Your JWT secret key for authentication

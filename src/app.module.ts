@@ -8,10 +8,14 @@ import { UserModule } from './user/user.module';
 import { CategoryModule } from './category/category.module';
 import { TaskModule } from './task/task.module';
 
+const mongoUri = process.env.MONGO_URL!;
+if (!mongoUri) {
+  throw new Error('Missing MongoDB connection string. Set MONGO_URL.');
+}
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    MongooseModule.forRoot(process.env.MONGOE_URL!),
+    MongooseModule.forRoot(mongoUri),
     AuthModule,
     UserModule,
     CategoryModule,
